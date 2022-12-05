@@ -5,23 +5,28 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
+import { Person2, ScreenSearchDesktop } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import ScreenSearchDesktopIcon from "@mui/icons-material/ScreenSearchDesktop";
-
-const pages = ["He Trobat 🔍", "He Perdut 🫤"];
-const settings = ["Perfil", "Compte", "Objectes Reportats", "Logout"];
+import LoginButton from "./LoginButton";
+import LogoutButton from "./LogoutButton";
+import { useAuth0 } from "@auth0/auth0-react";
+import { postUser } from "../services/message.service";
+import { Link, NavLink } from "react-router-dom";
 
 function NavBar() {
+  const { user, isAuthenticated } = useAuth0();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
+  if (isAuthenticated) {
+    postUser(user);
+  }
+
   const handleOpenNavMenu = (event) => {
-    console.log(event.currentTarget);
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event) => {
@@ -38,30 +43,21 @@ function NavBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <ScreenSearchDesktopIcon
-            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-          />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            Tobat
-          </Typography>
-
+          <Link style={{ textDecoration: "none", color: "white" }} to="/">
+            <Box
+              component="img"
+              sx={{
+                display: { xs: "none", md: "flex" },
+                mr: 1,
+                height: 64,
+              }}
+              alt="logo."
+              src="/images/logo.png"
+            />
+          </Link>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -91,21 +87,45 @@ function NavBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem key="buscador" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">
+                  <Link
+                    style={{ textDecoration: "none", color: "black" }}
+                    to="/buscador"
+                  >
+                    Buscar🔎
+                  </Link>
+                </Typography>
+              </MenuItem>
+              <MenuItem key="reportar" onClick={handleCloseNavMenu}>
+                <Typography href="/reportar" textAlign="center">
+                  <Link
+                    style={{ textDecoration: "none", color: "black" }}
+                    to="/reportar"
+                  >
+                    Reportar🗣
+                  </Link>
+                </Typography>
+              </MenuItem>
+              <MenuItem key="notificacio" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">
+                  <Link
+                    style={{ textDecoration: "none", color: "black" }}
+                    to="/notificacio"
+                  >
+                    Notificar-me 📩
+                  </Link>
+                </Typography>
+              </MenuItem>
             </Menu>
           </Box>
-          <ScreenSearchDesktopIcon
+          <ScreenSearchDesktop
             sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
           />
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href=""
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -117,26 +137,58 @@ function NavBar() {
               textDecoration: "none",
             }}
           >
-            Trobat
+            <Link style={{ textDecoration: "none", color: "white" }} to="/">
+              Trobat.cat
+            </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            <NavLink
+              style={{ textDecoration: "none", color: "white" }}
+              to="/buscador"
+            >
               <Button
-                key={page}
+                key="buscar"
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                Buscar🔎
               </Button>
-            ))}
+            </NavLink>
+            <NavLink
+              style={{ textDecoration: "none", color: "white" }}
+              to="/reportar"
+            >
+              <Button
+                key="reportar"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Reportar🗣
+              </Button>
+            </NavLink>
+            <NavLink
+              style={{ textDecoration: "none", color: "white" }}
+              to="/notificacio"
+            >
+              <Button
+                key="notificacio"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Notificar-me 📩
+              </Button>
+            </NavLink>
           </Box>
-
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            {!isAuthenticated && (
+              <LoginButton sx={{ my: 2, color: "white", display: "block" }} />
+            )}
+            {isAuthenticated && (
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Toti Moragas" src="/static/images/avatar/2.jpg" />
+                <Avatar alt={user.name} src={user.picture} />
               </IconButton>
-            </Tooltip>
+            )}
+
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
@@ -153,11 +205,19 @@ function NavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem sx={{ m: 0, p: 0 }}>
+                <Button>
+                  <Link
+                    style={{ textDecoration: "none", color: "black" }}
+                    to="/profile"
+                  >
+                    Perfil <Person2 sx={{ m: 1 }} />
+                  </Link>
+                </Button>
+              </MenuItem>
+              <MenuItem sx={{ m: 0, p: 0 }}>
+                <LogoutButton></LogoutButton>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
