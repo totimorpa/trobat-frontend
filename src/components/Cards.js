@@ -15,13 +15,13 @@ function Cards() {
               path="/buscador"
             />
             <CardItem
-              src="images/img-4.jpg"
+              src="images/img-7.jpg"
               text="L'eina per reportar un objecte que has trobat 👁"
               path="/reportar"
             />
             <CardItem
-              src="images/img-8.jpg"
-              text="Subscriu-te a un filtre per a que et notifiqui cada vegada que un objecte nou encaixa amb la teva descripcio 📩"
+              src="images/img-6.jpg"
+              text="Subscriu-te a un filtre per a que et notifiqui cada vegada que un objecte nou encaixa amb la teva descripció 📩"
               path="/notificacio"
             />
           </ul>
