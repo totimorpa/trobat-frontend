@@ -8,7 +8,11 @@ function Benvinguda() {
     <div className="benvinguda-container">
       {/* <video src="/videos/video-1.mp4" autoPlay loop muted /> */}
       <h1>trobat.cat</h1>
-      <p>Benvinguts al futur de la gestió d'objectes perduts.</p>
+      <p>
+        Benvinguts al gestor d'objectes perduts de Catalunya. Portal i eina per
+        a <b>catalogar</b>, <b>buscar</b> i <b>recuperar</b> pertinences
+        perdudes.
+      </p>
       <div className="benvinguda-btns">
         <Button
           className="btns"
