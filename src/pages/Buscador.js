@@ -13,15 +13,21 @@ const Buscador = () => {
       <Grid container justifyContent="center">
         <Box
           sx={{
-            m: 2,
-            p: 2,
-            alignItems: "center",
-            bgcolor: "white",
-            borderRadius: 2,
+            backgroundColor: "white",
+            height: 150,
             width: "80%",
+            mt: 3,
+            mb: 3,
+            p: 3,
+            borderRadius: 2,
+            display: "flex",
+            justifyContent: "center",
           }}
         >
-          Aqui van els filtres
+          <h2>
+            Aquí van els filtres, ara per ara es retornen tots els objectes de
+            la base de dades.
+          </h2>
         </Box>
         <LostObjects />
       </Grid>

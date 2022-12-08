@@ -5,11 +5,11 @@ import "./Benvinguda.css";
 
 function Benvinguda() {
   return (
-    <div className="hero-container">
+    <div className="benvinguda-container">
       {/* <video src="/videos/video-1.mp4" autoPlay loop muted /> */}
       <h1>trobat.cat</h1>
       <p>Benvinguts al futur de la gestió d'objectes perduts.</p>
-      <div className="hero-btns">
+      <div className="benvinguda-btns">
         <Button
           className="btns"
           buttonStyle="btn--outline"

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Box } from "@mui/system";
 
 const Reportar = () => {
   useEffect(() => {
@@ -6,7 +7,27 @@ const Reportar = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
 
-  return <h1>Reportar</h1>;
+  return (
+    <Box
+      sx={{
+        backgroundColor: "white",
+        height: 300,
+        width: "80%",
+        m: "auto",
+        mt: 3,
+        mb: 3,
+        p: 3,
+        borderRadius: 2,
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <h2>
+        Pagina per a reportar un objecte sota desenvolupament, si us plau espera
+        uns dies.
+      </h2>
+    </Box>
+  );
 };
 
 export default Reportar;

@@ -26,7 +26,7 @@ function Footer() {
             <Link to="/">Tutorial d'us</Link>
           </div>
           <div class="footer-link-items">
-            <h2>Social Media</h2>
+            <h2>Xarxes Socials</h2>
             <Link to="/">Instagram</Link>
             <Link to="/">Youtube</Link>
           </div>
@@ -39,7 +39,6 @@ function Footer() {
               <Box
                 component="img"
                 sx={{
-                  display: { xs: "none", md: "flex" },
                   mr: 1,
                   height: 64,
                 }}

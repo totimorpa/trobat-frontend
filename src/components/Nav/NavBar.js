@@ -5,7 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import { Person2, ScreenSearchDesktop } from "@mui/icons-material";
+import { Person2 } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
@@ -44,104 +44,28 @@ function NavBar() {
 
   return (
     <AppBar position="sticky">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Link style={{ textDecoration: "none", color: "white" }} to="/">
-            <Box
-              component="img"
-              sx={{
-                display: { xs: "none", md: "flex" },
-                mr: 1,
-                height: 64,
-              }}
-              alt="logo."
-              src="/images/logo.png"
-            />
-          </Link>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              <MenuItem key="buscador" onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">
-                  <Link
-                    style={{ textDecoration: "none", color: "black" }}
-                    to="/buscador"
-                  >
-                    Buscar🔎
-                  </Link>
-                </Typography>
-              </MenuItem>
-              <MenuItem key="reportar" onClick={handleCloseNavMenu}>
-                <Typography href="/reportar" textAlign="center">
-                  <Link
-                    style={{ textDecoration: "none", color: "black" }}
-                    to="/reportar"
-                  >
-                    Reportar🗣
-                  </Link>
-                </Typography>
-              </MenuItem>
-              <MenuItem key="notificacio" onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">
-                  <Link
-                    style={{ textDecoration: "none", color: "black" }}
-                    to="/notificacio"
-                  >
-                    Notificar-me 📩
-                  </Link>
-                </Typography>
-              </MenuItem>
-            </Menu>
+      <Container maxWidth="xxl">
+        <Toolbar disableGutters sx={{ display: "flex" }}>
+          <Box sx={{ flexGrow: 1 }}>
+            <Link style={{ textDecoration: "none", color: "white" }} to="/">
+              <Box
+                component="img"
+                sx={{
+                  mr: 1,
+                  height: 64,
+                }}
+                alt="logo."
+                src="/images/logo.png"
+              />
+            </Link>
           </Box>
-          <ScreenSearchDesktop
-            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-          />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
+
+          <Box
             sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
+              display: { xs: "none", md: "flex" },
               flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
             }}
           >
-            <Link style={{ textDecoration: "none", color: "white" }} to="/">
-              Trobat.cat
-            </Link>
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <NavLink
               style={{ textDecoration: "none", color: "white" }}
               to="/buscador"
@@ -179,7 +103,12 @@ function NavBar() {
               </Button>
             </NavLink>
           </Box>
-          <Box sx={{ flexGrow: 0 }}>
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              flexGrow: 0,
+            }}
+          >
             {!isAuthenticated && (
               <LoginButton sx={{ my: 2, color: "white", display: "block" }} />
             )}
@@ -188,7 +117,6 @@ function NavBar() {
                 <Avatar alt={user.name} src={user.picture} />
               </IconButton>
             )}
-
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
@@ -217,6 +145,76 @@ function NavBar() {
               </MenuItem>
               <MenuItem sx={{ m: 0, p: 0 }}>
                 <LogoutButton></LogoutButton>
+              </MenuItem>
+            </Menu>
+          </Box>
+          <Box
+            sx={{
+              justifyContent: "flex-end",
+              display: { xs: "flex", md: "none" },
+              flexGrow: 0,
+            }}
+          >
+            <IconButton
+              size="large"
+              color="inherit"
+              aria-label="menu"
+              aria-controls="menu-appbar"
+              onClick={handleOpenNavMenu}
+              edge="end"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: "block", md: "none" },
+              }}
+            >
+              <MenuItem key="buscador" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">
+                  <Link
+                    style={{ textDecoration: "none", color: "black" }}
+                    to="/buscador"
+                  >
+                    Buscar 🔎
+                  </Link>
+                </Typography>
+              </MenuItem>
+              <MenuItem key="reportar" onClick={handleCloseNavMenu}>
+                <Typography href="/reportar" textAlign="center">
+                  <Link
+                    style={{ textDecoration: "none", color: "black" }}
+                    to="/reportar"
+                  >
+                    Reportar 🗣
+                  </Link>
+                </Typography>
+              </MenuItem>
+              <MenuItem key="notificacio" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">
+                  <Link
+                    style={{ textDecoration: "none", color: "black" }}
+                    to="/notificacio"
+                  >
+                    Notificar-me 📩
+                  </Link>
+                </Typography>
+              </MenuItem>
+              <MenuItem key="login" onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Log In 👤</Typography>
               </MenuItem>
             </Menu>
           </Box>
