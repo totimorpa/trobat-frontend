@@ -1,5 +1,5 @@
 import React from "react";
-import { InputLabel } from "@material-ui/core";
+import { InputLabel } from "@mui/material";
 import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import TextareaAutosize from "@mui/base/TextareaAutosize";

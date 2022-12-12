@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField, InputLabel } from "@material-ui/core";
+import { TextField, InputLabel } from "@mui/material";
 import { Box } from "@mui/system";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";

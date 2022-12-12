@@ -1,6 +1,6 @@
 import React from "react";
-import { useMediaQuery } from "@material-ui/core/";
-import { CircularProgress } from "@material-ui/core";
+import { useMediaQuery } from "@mui/material/";
+import { CircularProgress } from "@mui/material";
 
 const Thumb = (props) => {
   const { file, src, variant = "normal" } = props;

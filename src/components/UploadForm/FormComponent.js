@@ -6,7 +6,7 @@ import {
   Button,
   Typography,
   Box,
-} from "@material-ui/core";
+} from "@mui/material";
 
 import IntroStep from "./Forms/IntroStep";
 import InfoStep from "./Forms/InfoStep";

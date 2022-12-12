@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField, Select, InputLabel, MenuItem } from "@material-ui/core";
+import { TextField, Select, InputLabel, MenuItem } from "@mui/material";
 import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
 
