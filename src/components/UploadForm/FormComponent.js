@@ -6,6 +6,7 @@ import {
   Button,
   Typography,
   Box,
+  StepButton,
 } from "@mui/material";
 
 import IntroStep from "./Forms/IntroStep";
@@ -60,6 +61,17 @@ function getStepContent(
 }
 const FormComponent = () => {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [completed, setCompleted] = React.useState({
+    0: true,
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+    6: false,
+    7: false,
+  });
+
   const steps = getSteps();
 
   const [formData, setFormData] = React.useState({});
@@ -67,6 +79,36 @@ const FormComponent = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
+    if (
+      formData.hasOwnProperty("title") &&
+      formData.hasOwnProperty("categories")
+    ) {
+      setCompleted((prevState) => ({
+        ...prevState,
+        2: true,
+      }));
+    }
+    if (formData.hasOwnProperty("detailInfo")) {
+      setCompleted((prevState) => ({
+        ...prevState,
+        3: true,
+      }));
+    }
+    if (formData.hasOwnProperty("llocs")) {
+      setCompleted((prevState) => ({
+        ...prevState,
+        5: true,
+      }));
+    }
+    if (
+      formData.hasOwnProperty("telefon") &&
+      formData.hasOwnProperty("recollida")
+    ) {
+      setCompleted((prevState) => ({
+        ...prevState,
+        6: true,
+      }));
+    }
   };
 
   const handleChangeImage = (file) => {
@@ -76,12 +118,20 @@ const FormComponent = () => {
         file,
       },
     }));
+    setCompleted((prevState) => ({
+      ...prevState,
+      1: true,
+    }));
   };
 
   const handleDateChange = (date) => {
     setFormData((prevState) => ({
       ...prevState,
       date,
+    }));
+    setCompleted((prevState) => ({
+      ...prevState,
+      4: true,
     }));
   };
 
@@ -101,10 +151,12 @@ const FormComponent = () => {
 
   return (
     <div>
-      <Stepper activeStep={activeStep} alternativeLabel>
+      <Stepper nonLinear activeStep={activeStep} alternativeLabel>
         {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel></StepLabel>
+          <Step key={label} completed={completed[steps.indexOf(label)]}>
+            <StepButton onClick={() => setActiveStep(steps.indexOf(label))}>
+              {label}
+            </StepButton>
           </Step>
         ))}
       </Stepper>
