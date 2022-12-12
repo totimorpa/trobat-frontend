@@ -42,9 +42,18 @@ export const postLostObject = async (user, lostObject) => {
     url: `${apiServerUrl}/lostObjects`,
     method: "POST",
     headers: {
-      "content-type": "application/json",
+      "Content-Type": "application/json",
     },
-    data: { username: user.email },
+    data: {
+      user: user.email,
+      title: lostObject.title,
+      text: lostObject.detailInfo,
+      dateFound: lostObject.date,
+      categories: lostObject.categories,
+      lloc: lostObject.lloc,
+      telefon: lostObject.telefon,
+      recollida: lostObject.recollida,
+    },
   });
   const { data } = response;
   return {
@@ -58,7 +67,7 @@ export const postUser = async (user) => {
     url: `${apiServerUrl}/users`,
     method: "POST",
     headers: {
-      "content-type": "application/json",
+      "Content-Type": "application/json",
     },
     data: { username: user.email },
   });

@@ -16,7 +16,7 @@ function Benvinguda() {
       <div className="benvinguda-btns">
         <Button
           className="btns"
-          buttonStyle="btn--outline"
+          buttonStyle="btn--primary"
           buttonSize="btn--large"
           path="/buscador"
         >
@@ -24,12 +24,20 @@ function Benvinguda() {
         </Button>
         <Button
           className="btns"
+          buttonStyle="btn--outline"
+          buttonSize="btn--large"
+          path="/reportar"
+        >
+          REPORTAR
+        </Button>
+        {/* <Button
+          className="btns"
           buttonStyle="btn--primary"
           buttonSize="btn--large"
           onClick={console.log("hey")}
         >
           VEURE VIDEO <i className="far fa-play-circle" />
-        </Button>
+        </Button> */}
       </div>
     </div>
   );

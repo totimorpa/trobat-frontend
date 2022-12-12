@@ -56,7 +56,7 @@ const LostObjects = () => {
               key={lostObject.id}
               text={lostObject.title}
               src={lostObject.picture}
-              label="Electronica"
+              label={lostObject.categories}
             ></CardItem>
           </Grid>
         ))}

@@ -19,8 +19,8 @@ const LlocStep = (props) => {
         <InputLabel>Ciutat</InputLabel>
         <Select
           style={{ width: "100%" }}
-          name="llocs"
-          value={props.formData["llocs"] || ""}
+          name="lloc"
+          value={props.formData["lloc"] || ""}
           onChange={(newvalue) => props.onChange(newvalue)}
         >
           {places.map((place) => (

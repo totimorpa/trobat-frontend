@@ -8,7 +8,7 @@ import {
   Box,
   StepButton,
 } from "@mui/material";
-
+import { useAuth0 } from "@auth0/auth0-react";
 import IntroStep from "./Forms/IntroStep";
 import InfoStep from "./Forms/InfoStep";
 import LlocStep from "./Forms/LlocStep";
@@ -17,6 +17,7 @@ import DateStep from "./Forms/DateStep";
 import DetailInfoStep from "./Forms/DetailInfoStep";
 import ResumStep from "./Forms/ResumStep";
 import InfoRecollidaStep from "./Forms/InfoRecollidaStep";
+import { postLostObject } from "../services/message.service";
 
 function getSteps() {
   return [
@@ -60,6 +61,7 @@ function getStepContent(
   }
 }
 const FormComponent = () => {
+  const { user, isAuthenticated } = useAuth0();
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({
     0: true,
@@ -69,8 +71,8 @@ const FormComponent = () => {
     4: false,
     5: false,
     6: false,
-    7: false,
   });
+  const [message, setMessage] = React.useState([]);
 
   const steps = getSteps();
 
@@ -92,7 +94,7 @@ const FormComponent = () => {
         3: true,
       }));
     }
-    if (formData.hasOwnProperty("llocs")) {
+    if (formData.hasOwnProperty("lloc")) {
       setCompleted((prevState) => ({
         ...prevState,
         5: true,
@@ -112,8 +114,6 @@ const FormComponent = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
-    console.log("hola");
-    console.log(formData);
   };
 
   const handleChangeImage = (file) => {
@@ -140,13 +140,37 @@ const FormComponent = () => {
     }));
   };
 
-  const handleSubmit = () => {};
+  const allStepsCompleted = (completed) => {
+    for (let value of Object.values(completed)) {
+      if (!value) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const handleSubmit = () => {
+    const getMessage = async () => {
+      const { data, error } = await postLostObject(user, formData);
+      if (data) {
+        setMessage(data);
+      }
+      if (error) {
+        setMessage(JSON.stringify(error, null, 2));
+      }
+    };
+    getMessage();
+
+    console.log(message);
+  };
 
   const handleNext = () => {
     if (activeStep < 7) {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     } else {
-      handleSubmit();
+      if (allStepsCompleted(completed)) {
+        handleSubmit();
+      }
     }
   };
 
