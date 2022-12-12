@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Stepper,
   Step,
@@ -76,9 +76,7 @@ const FormComponent = () => {
 
   const [formData, setFormData] = React.useState({});
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevState) => ({ ...prevState, [name]: value }));
+  useEffect(() => {
     if (
       formData.hasOwnProperty("title") &&
       formData.hasOwnProperty("categories")
@@ -109,6 +107,13 @@ const FormComponent = () => {
         6: true,
       }));
     }
+  }, [activeStep]);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevState) => ({ ...prevState, [name]: value }));
+    console.log("hola");
+    console.log(formData);
   };
 
   const handleChangeImage = (file) => {
