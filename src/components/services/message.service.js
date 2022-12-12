@@ -37,6 +37,22 @@ export const getUsers = async () => {
   };
 };
 
+export const postLostObject = async (user, lostObject) => {
+  const response = await axios({
+    url: `${apiServerUrl}/lostObjects`,
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    data: { username: user.email },
+  });
+  const { data } = response;
+  return {
+    data: data || null,
+    error: null,
+  };
+};
+
 export const postUser = async (user) => {
   const response = await axios({
     url: `${apiServerUrl}/users`,

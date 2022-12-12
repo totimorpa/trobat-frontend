@@ -6,35 +6,35 @@ import { Box } from "@mui/system";
 function Footer() {
   return (
     <div className="footer-container">
-      <div class="footer-links">
+      <div className="footer-links">
         <div className="footer-link-wrapper">
-          <div class="footer-link-items">
+          <div className="footer-link-items">
             <h2>Sobre Nosaltres</h2>
             <Link to="/">Qui som?</Link>
             <Link to="/">Reposotiori codi</Link>
           </div>
-          <div class="footer-link-items">
+          <div className="footer-link-items">
             <h2>Contactans</h2>
             <Link to="/">Contacte</Link>
             <Link to="/">Suport</Link>
           </div>
         </div>
         <div className="footer-link-wrapper">
-          <div class="footer-link-items">
+          <div className="footer-link-items">
             <h2>Videos</h2>
             <Link to="/">Presentació</Link>
             <Link to="/">Tutorial d'us</Link>
           </div>
-          <div class="footer-link-items">
+          <div className="footer-link-items">
             <h2>Xarxes Socials</h2>
             <Link to="/">Instagram</Link>
             <Link to="/">Youtube</Link>
           </div>
         </div>
       </div>
-      <section class="social-media">
-        <div class="social-media-wrap">
-          <div class="footer-logo">
+      <section className="social-media">
+        <div className="social-media-wrap">
+          <div className="footer-logo">
             <Link to="/" className="social-logo">
               <Box
                 component="img"
@@ -46,10 +46,10 @@ function Footer() {
                 src="/images/logo.png"
               />
               trobat.cat
-              <i class="fab fa-typo3" />
+              <i className="fab fa-typo3" />
             </Link>
           </div>
-          <small class="website-rights">Trobat © 2022</small>
+          <small className="website-rights">Trobat © 2022</small>
         </div>
       </section>
     </div>

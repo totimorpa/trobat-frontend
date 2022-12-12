@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Box } from "@mui/system";
+import FormComponent from "../components/UploadForm/FormComponent";
 
 const Reportar = () => {
   useEffect(() => {
@@ -11,21 +12,14 @@ const Reportar = () => {
     <Box
       sx={{
         backgroundColor: "white",
-        height: 300,
-        width: "80%",
-        m: "auto",
+        m: 2,
         mt: 3,
         mb: 3,
         p: 3,
         borderRadius: 2,
-        display: "flex",
-        justifyContent: "center",
       }}
     >
-      <h2>
-        Pagina per a reportar un objecte sota desenvolupament, si us plau espera
-        uns dies.
-      </h2>
+      <FormComponent />
     </Box>
   );
 };

@@ -1,6 +1,6 @@
 import "./App.css";
 import NavBar from "./components/Nav/NavBar";
-import { grey } from "@mui/material/colors";
+import { grey, cyan } from "@mui/material/colors";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Buscador from "./pages/Buscador";
@@ -13,6 +13,9 @@ import Footer from "./components/Footer";
 const theme = createTheme({
   palette: {
     primary: {
+      main: grey[800],
+    },
+    secondary: {
       main: grey[800],
     },
   },
