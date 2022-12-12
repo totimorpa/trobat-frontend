@@ -11,9 +11,7 @@ const DateStep = (props) => {
     <React.Fragment>
       <Box
         sx={{
-          mb: 5,
-          ml: 5,
-          mr: 5,
+          m: 5,
         }}
       >
         <div>

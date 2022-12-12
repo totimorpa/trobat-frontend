@@ -1,6 +1,6 @@
 import "./App.css";
 import NavBar from "./components/Nav/NavBar";
-import { grey, cyan } from "@mui/material/colors";
+import { grey } from "@mui/material/colors";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Buscador from "./pages/Buscador";

@@ -15,7 +15,7 @@ const places = [
 const LlocStep = (props) => {
   return (
     <Grid>
-      <Box sx={{ mb: 5, ml: 5, mr: 5 }}>
+      <Box sx={{ m: 5 }}>
         <InputLabel>Ciutat</InputLabel>
         <Select
           style={{ width: "100%" }}

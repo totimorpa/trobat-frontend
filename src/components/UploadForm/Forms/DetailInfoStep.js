@@ -7,7 +7,7 @@ import TextareaAutosize from "@mui/base/TextareaAutosize";
 const DetailInfoStep = (props) => {
   return (
     <Grid>
-      <Box sx={{ mb: 5, ml: 3, mr: 3 }}>
+      <Box sx={{ m: 5 }}>
         <InputLabel style={{ marginBottom: 10 }}>
           Escriu informació detallada de l'objecte:
         </InputLabel>

@@ -6,7 +6,7 @@ import { Box } from "@mui/system";
 const InfoRecollidaStep = (props) => {
   return (
     <Grid>
-      <Box sx={{ mb: 5, ml: 5, mr: 5 }}>
+      <Box sx={{ m: 5 }}>
         <TextField
           label="Tf contacte"
           placeholder="Eg: 625 762 672"

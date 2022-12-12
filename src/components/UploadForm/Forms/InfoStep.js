@@ -19,7 +19,7 @@ const categories = [
 const InfoStep = (props) => {
   return (
     <Grid>
-      <Box sx={{ mb: 5, ml: 5, mr: 5 }}>
+      <Box sx={{ m: 5 }}>
         <TextField
           label="Títol"
           placeholder="Eg: Iphone 6 blau"

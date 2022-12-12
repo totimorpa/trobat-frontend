@@ -22,7 +22,7 @@ function ResumStep(props) {
   }, []);
 
   return (
-    <React.Fragment>
+    <Box sx={{ m: 5 }}>
       <Typography gutterBottom variant="h5">
         Repassa les dades introduides
       </Typography>
@@ -65,7 +65,7 @@ function ResumStep(props) {
           </Typography>
         </Grid>
       </Grid>
-    </React.Fragment>
+    </Box>
   );
 }
 
