@@ -154,9 +154,9 @@ const FormComponent = () => {
       <Stepper nonLinear activeStep={activeStep} alternativeLabel>
         {steps.map((label) => (
           <Step key={label} completed={completed[steps.indexOf(label)]}>
-            <StepButton onClick={() => setActiveStep(steps.indexOf(label))}>
-              {label}
-            </StepButton>
+            <StepButton
+              onClick={() => setActiveStep(steps.indexOf(label))}
+            ></StepButton>
           </Step>
         ))}
       </Stepper>
