@@ -24,7 +24,7 @@ const Thumb = (props) => {
       style={{
         borderRadius: 10,
         maxWidth: `${
-          variant === "small" ? "100px" : matchWidthBigScreen ? "200px" : "70%"
+          variant === "small" ? "100px" : matchWidthBigScreen ? "400px" : "70%"
         }`,
         minWidth: `${
           variant === "small" ? "100px" : matchWidthBigScreen ? "175px" : "75px"

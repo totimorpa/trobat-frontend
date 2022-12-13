@@ -9,7 +9,7 @@ function Benvinguda() {
       {/* <video src="/videos/video-1.mp4" autoPlay loop muted /> */}
       <h1>trobat.cat</h1>
       <p>
-        Benvinguts al gestor d'objectes perduts de Catalunya. Portal i eina per
+        Benvinguts al gestor d'objectes perduts de Catalunya.<br></br> Eina per
         a <b>catalogar</b>, <b>buscar</b> i <b>recuperar</b> pertinences
         perdudes.
       </p>
