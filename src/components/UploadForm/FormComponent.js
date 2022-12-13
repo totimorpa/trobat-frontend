@@ -170,6 +170,8 @@ const FormComponent = () => {
     } else {
       if (allStepsCompleted(completed)) {
         handleSubmit();
+      } else {
+        alert("Si us plau, omple tots els camps");
       }
     }
   };

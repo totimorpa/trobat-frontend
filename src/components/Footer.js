@@ -10,13 +10,13 @@ function Footer() {
         <div className="footer-link-wrapper">
           <div className="footer-link-items">
             <h2>Sobre Nosaltres</h2>
-            <Link to="/">Qui som?</Link>
-            <Link to="/">Reposotiori codi</Link>
+            <a to="/">Qui som?</a>
+            <a to="/">Reposotiori codi</a>
           </div>
           <div className="footer-link-items">
             <h2>Contactans</h2>
-            <Link to="/">Contacte</Link>
-            <Link to="/">Suport</Link>
+            <a href="mailto: totimorpa@gmail.com">Contacte</a>
+            <a href="mailto: totimorpa@gmail.com">Suport</a>
           </div>
         </div>
         <div className="footer-link-wrapper">
