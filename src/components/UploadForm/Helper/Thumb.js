@@ -22,11 +22,12 @@ const Thumb = (props) => {
       src={src.result}
       alt={file.name}
       style={{
+        borderRadius: 10,
         maxWidth: `${
-          variant === "small" ? "50px" : matchWidthBigScreen ? "200px" : "90px"
+          variant === "small" ? "100px" : matchWidthBigScreen ? "200px" : "70%"
         }`,
         minWidth: `${
-          variant === "small" ? "50px" : matchWidthBigScreen ? "175px" : "75px"
+          variant === "small" ? "100px" : matchWidthBigScreen ? "175px" : "75px"
         }}`,
         padding: `${variant === "small" ? "1px" : "2px"}`,
         backgroundColor: "gray",

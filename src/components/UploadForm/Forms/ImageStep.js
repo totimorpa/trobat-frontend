@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Grid } from "@mui/material";
 import Thumb from "../Helper/Thumb";
 import { Box } from "@mui/material";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
 
 const ImageStep = (props) => {
   const [fileName, setFileName] = useState("");
@@ -24,12 +25,24 @@ const ImageStep = (props) => {
   return (
     <Grid container spacing={3} style={{ margin: 4 }}>
       <Grid item xs={12}>
-        <label style={{ color: "var(--main-color)" }}>
+        <label
+          for="inputTag"
+          style={{ color: "var(--main-color)", cursor: "pointer" }}
+        >
           Fes una foto de l'objecte trobat
+          <br />
+          <input
+            id="inputTag"
+            name="image"
+            type="file"
+            accept="image/*"
+            onChange={_onChange}
+            style={{ display: "none" }}
+          />
+          <CameraAltIcon fontSize="large" />
+          <br />
         </label>
-        <br />
 
-        <input name="image" type="file" accept="image/*" onChange={_onChange} />
         <Box sx={{ m: 2 }}>
           <Thumb file={file} src={src}></Thumb>
         </Box>
