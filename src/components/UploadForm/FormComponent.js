@@ -2,7 +2,6 @@ import React, { useEffect, useCallback } from "react";
 import {
   Stepper,
   Step,
-  StepLabel,
   Button,
   Typography,
   Box,
@@ -137,6 +136,9 @@ const FormComponent = () => {
       ...prevState,
       1: true,
     }));
+
+    const base64Image = compressAndEncodeImage(file, 50);
+    console.log(base64Image);
   };
 
   const handleDateChange = (date) => {
