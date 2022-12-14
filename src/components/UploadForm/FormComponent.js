@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import {
   Stepper,
   Step,
@@ -7,6 +7,7 @@ import {
   Typography,
   Box,
   StepButton,
+  Modal,
 } from "@mui/material";
 import { useAuth0 } from "@auth0/auth0-react";
 import IntroStep from "./Forms/IntroStep";
@@ -18,6 +19,7 @@ import DetailInfoStep from "./Forms/DetailInfoStep";
 import ResumStep from "./Forms/ResumStep";
 import InfoRecollidaStep from "./Forms/InfoRecollidaStep";
 import { postLostObject } from "../services/message.service";
+import { useNavigate } from "react-router-dom";
 
 function getSteps() {
   return [
@@ -61,6 +63,7 @@ function getStepContent(
   }
 }
 const FormComponent = () => {
+  const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth0();
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({
@@ -77,6 +80,13 @@ const FormComponent = () => {
   const steps = getSteps();
 
   const [formData, setFormData] = React.useState({});
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => {
+    setOpen(false);
+    navigate("/", { replace: true });
+  };
 
   useEffect(() => {
     if (
@@ -162,6 +172,7 @@ const FormComponent = () => {
     getMessage();
 
     console.log(message);
+    handleOpen();
   };
 
   const handleNext = () => {
@@ -217,6 +228,32 @@ const FormComponent = () => {
             {activeStep === steps.length - 1 ? "Pejar" : "Següent"}
           </Button>
         </Box>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "80%",
+              height: "90%",
+              bgcolor: "background.paper",
+              borderRadius: 4,
+              boxShadow: 24,
+              p: 4,
+            }}
+          >
+            <Typography variant="h2" sx={{ m: "auto" }}>
+              Gràcies per penjar un objecte, el propieteari segur que n'està
+              agraït! 🙏🏽 ❤️
+            </Typography>
+          </Box>
+        </Modal>
         {/* <pre>{JSON.stringify(formData, null, 2)}</pre> */}
       </div>
     </div>
