@@ -136,9 +136,6 @@ const FormComponent = () => {
       ...prevState,
       1: true,
     }));
-
-    const base64Image = compressAndEncodeImage(file, 50);
-    console.log(base64Image);
   };
 
   const handleDateChange = (date) => {
