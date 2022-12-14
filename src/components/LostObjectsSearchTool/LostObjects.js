@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { Grid, Typography, Modal } from "@mui/material";
+import { Grid, Typography, Modal, Hidden } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getLostObjects } from "../services/message.service";
@@ -8,7 +8,12 @@ import "../Cards.css";
 
 const LostObjects = () => {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  const [selectedObject, setSelectedObject] = useState({});
+
+  const handleOpen = (objecte) => {
+    setSelectedObject(objecte);
+    setOpen(true);
+  };
   const handleClose = () => setOpen(false);
   const [message, setMessage] = useState([]);
 
@@ -59,7 +64,10 @@ const LostObjects = () => {
           {[...message, ...message, ...message].map((lostObject) => (
             <Grid key={lostObject.id} item xs={3} sm={4} md={4}>
               <li className="cards__item">
-                <div className="cards__item__link" onClick={handleOpen}>
+                <div
+                  className="cards__item__link"
+                  onClick={() => handleOpen(lostObject)}
+                >
                   <figure
                     className={
                       lostObject.categories
@@ -75,7 +83,7 @@ const LostObjects = () => {
                     />
                   </figure>
                   <div className="cards__item__info">
-                    <h6 className="cards__item__text">{lostObject.title}</h6>
+                    <h4 className="cards__item__text">{lostObject.title}</h4>
                   </div>
                 </div>
               </li>
@@ -88,6 +96,7 @@ const LostObjects = () => {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        disableAutoFocus={true}
       >
         <Box
           sx={{
@@ -102,9 +111,11 @@ const LostObjects = () => {
             p: 4,
           }}
         >
-          <Typography variant="h4" sx={{ m: "auto" }}>
-            info de l'objecte
-          </Typography>
+          info de l'objecte:
+          <br />
+          <pre style={{ whiteSpace: "pre-wrap" }}>
+            {JSON.stringify(selectedObject, null, 2)}
+          </pre>
         </Box>
       </Modal>
     </>
