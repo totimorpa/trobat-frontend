@@ -222,14 +222,14 @@ function NavBar() {
               )}
               {isAuthenticated && (
                 <MenuItem key="profile" onClick={handleCloseNavMenu}>
-                  <Button>
+                  <Typography textAlign="center">
                     <Link
                       style={{ textDecoration: "none", color: "black" }}
-                      to="/profile"
+                      to="/notificacio"
                     >
                       Perfil 👤
                     </Link>
-                  </Button>
+                  </Typography>
                 </MenuItem>
               )}
               {isAuthenticated && (
