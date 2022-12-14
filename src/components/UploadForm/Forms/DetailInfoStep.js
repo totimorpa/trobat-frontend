@@ -9,7 +9,7 @@ const DetailInfoStep = (props) => {
     <Grid>
       <Box sx={{ m: 5 }}>
         <InputLabel style={{ marginBottom: 10 }}>
-          Escriu informació detallada de l'objecte:
+          Informació detallada:
         </InputLabel>
         <TextareaAutosize
           aria-label="minimum height"

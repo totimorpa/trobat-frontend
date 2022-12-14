@@ -8,7 +8,7 @@ const InfoRecollidaStep = (props) => {
     <Grid>
       <Box sx={{ m: 5 }}>
         <TextField
-          label="Tf contacte"
+          label="Telf. contacte"
           placeholder="Eg: 625 762 672"
           margin="normal"
           name="telefon"
@@ -17,7 +17,7 @@ const InfoRecollidaStep = (props) => {
           fullWidth
         />
         <TextField
-          label="Lloc Emmagatzematge"
+          label="Lloc d'emmagatzematge"
           placeholder="Eg. Estacio Sants"
           margin="normal"
           name="recollida"

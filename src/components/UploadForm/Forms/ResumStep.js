@@ -56,11 +56,11 @@ function ResumStep(props) {
             {props.formData.llocs}
           </Typography>
           <Typography gutterBottom>
-            <b>{"Telefon contacte: "}</b>
+            <b>{"Telèfon contacte: "}</b>
             {props.formData.telefon}
           </Typography>
           <Typography gutterBottom>
-            <b>{"Lloc on es guardarà: "}</b>
+            <b>{"Lloc d'emmagatzematge: "}</b>
             {props.formData.recollida}
           </Typography>
         </Grid>

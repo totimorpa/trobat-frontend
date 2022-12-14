@@ -105,46 +105,45 @@ function NavBar() {
                 Notificar-me 📩
               </Button>
             </NavLink>
-
-            {!isAuthenticated && (
-              <LoginButton sx={{ my: 2, color: "white", display: "block" }} />
-            )}
-            {isAuthenticated && (
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={user.name} src={user.picture} />
-              </IconButton>
-            )}
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              <MenuItem sx={{ m: 0, p: 0 }}>
-                <Button>
-                  <Link
-                    style={{ textDecoration: "none", color: "black" }}
-                    to="/profile"
-                  >
-                    Perfil <Person2 sx={{ m: 1 }} />
-                  </Link>
-                </Button>
-              </MenuItem>
-              <MenuItem sx={{ m: 0, p: 0 }}>
-                <LogoutButton></LogoutButton>
-              </MenuItem>
-            </Menu>
           </Box>
+          {!isAuthenticated && (
+            <LoginButton sx={{ my: 2, color: "white", display: "block" }} />
+          )}
+          {isAuthenticated && (
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <Avatar alt={user.name} src={user.picture} />
+            </IconButton>
+          )}
+          <Menu
+            sx={{ mt: "45px" }}
+            id="menu-appbar"
+            anchorEl={anchorElUser}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            open={Boolean(anchorElUser)}
+            onClose={handleCloseUserMenu}
+          >
+            <MenuItem sx={{ m: 0, p: 0 }}>
+              <Button>
+                <Link
+                  style={{ textDecoration: "none", color: "black" }}
+                  to="/profile"
+                >
+                  Perfil <Person2 sx={{ m: 1 }} />
+                </Link>
+              </Button>
+            </MenuItem>
+            <MenuItem sx={{ m: 0, p: 0 }}>
+              <LogoutButton></LogoutButton>
+            </MenuItem>
+          </Menu>
           <Box
             sx={{
               justifyContent: "flex-end",

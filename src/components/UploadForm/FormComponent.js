@@ -225,7 +225,7 @@ const FormComponent = () => {
           </Button>
 
           <Button variant="contained" color="primary" onClick={handleNext}>
-            {activeStep === steps.length - 1 ? "Pejar" : "Següent"}
+            {activeStep === steps.length - 1 ? "Penjar" : "Següent"}
           </Button>
         </Box>
         <Modal
@@ -241,16 +241,15 @@ const FormComponent = () => {
               left: "50%",
               transform: "translate(-50%, -50%)",
               width: "80%",
-              height: "90%",
               bgcolor: "background.paper",
               borderRadius: 4,
               boxShadow: 24,
               p: 4,
             }}
           >
-            <Typography variant="h2" sx={{ m: "auto" }}>
-              Gràcies per penjar un objecte, el propieteari segur que n'està
-              agraït! 🙏🏽 ❤️
+            <Typography variant="h4" sx={{ m: "auto" }}>
+              Gràcies per penjar un objecte, el propietari segur que n'està
+              agraït! 🙏🏽 🫶🏼
             </Typography>
           </Box>
         </Modal>

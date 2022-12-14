@@ -10,11 +10,13 @@ function Footer() {
         <div className="footer-link-wrapper">
           <div className="footer-link-items">
             <h2>Sobre Nosaltres</h2>
-            <a to="/">Qui som?</a>
-            <a to="/">Reposotiori codi</a>
+            <a href="https://www.linkedin.com/in/toti-moragas-pardell-602335200/">
+              Qui som?
+            </a>
+            <a href="https://github.com/totimorpa/trobat-frontend">Github</a>
           </div>
           <div className="footer-link-items">
-            <h2>Contactans</h2>
+            <h2>Contacta'ns</h2>
             <a href="mailto: totimorpa@gmail.com">Contacte</a>
             <a href="mailto: totimorpa@gmail.com">Suport</a>
           </div>

@@ -4,12 +4,12 @@ import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
 
 const categories = [
-  { value: "electronica", label: "Electronica" },
+  { value: "electronica", label: "Electrònica" },
   { value: "carteres", label: "Cartera" },
   { value: "documents", label: "Documents Personals" },
   { value: "roba", label: "Roba" },
   { value: "bolsos", label: "Bolsos" },
-  { value: "motxilles", label: "Motixilles i Maletes" },
+  { value: "motxilles", label: "Motxilles i Maletes" },
   { value: "ulleres", label: "Ulleres" },
   { value: "joies", label: "Cartera" },
   { value: "altres", label: "Altres" },

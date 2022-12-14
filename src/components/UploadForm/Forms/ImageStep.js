@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
 import Thumb from "../Helper/Thumb";
 import { Box } from "@mui/material";
@@ -22,6 +22,18 @@ const ImageStep = (props) => {
     props.onChange(file);
   };
 
+  useEffect(() => {
+    let reader = new FileReader();
+    let file = props.formData.image && props.formData.image.file;
+    if (file) {
+      reader.onloadend = () => setFileName(file.name);
+      if (file.name !== fileName) {
+        reader.readAsDataURL(file);
+        setSrc(reader);
+        setFile(file);
+      }
+    }
+  }, []);
   return (
     <Grid container spacing={3} style={{ margin: 4 }}>
       <Grid item xs={12}>
