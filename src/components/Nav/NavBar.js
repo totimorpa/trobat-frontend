@@ -102,13 +102,7 @@ function NavBar() {
                 Notificar-me 📩
               </Button>
             </NavLink>
-          </Box>
-          <Box
-            sx={{
-              display: { xs: "none", md: "flex" },
-              flexGrow: 0,
-            }}
-          >
+
             {!isAuthenticated && (
               <LoginButton sx={{ my: 2, color: "white", display: "block" }} />
             )}
