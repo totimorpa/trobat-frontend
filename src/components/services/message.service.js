@@ -45,7 +45,7 @@ export const postLostObject = async (user, lostObject) => {
       "Content-Type": "application/json",
     },
     data: {
-      user: user.email,
+      user: "totimorpa@gmail.com",
       title: lostObject.title,
       text: lostObject.detailInfo,
       dateFound: lostObject.date,
