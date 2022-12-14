@@ -252,7 +252,6 @@ const FormComponent = () => {
             </Typography>
           </Box>
         </Modal>
-        {/* <pre>{JSON.stringify(formData, null, 2)}</pre> */}
       </div>
     </div>
   );
