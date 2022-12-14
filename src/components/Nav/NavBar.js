@@ -225,7 +225,7 @@ function NavBar() {
                   <Typography textAlign="center">
                     <Link
                       style={{ textDecoration: "none", color: "black" }}
-                      to="/notificacio"
+                      to="/profile"
                     >
                       Perfil 👤
                     </Link>
