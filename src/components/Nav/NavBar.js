@@ -186,66 +186,53 @@ function NavBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItem key="buscador" onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">
-                  <Link
-                    style={{ textDecoration: "none", color: "black" }}
-                    to="/buscador"
-                  >
-                    Buscar 🔎
-                  </Link>
-                </Typography>
-              </MenuItem>
-              <MenuItem key="reportar" onClick={handleCloseNavMenu}>
-                <Typography href="/reportar" textAlign="center">
-                  <Link
-                    style={{ textDecoration: "none", color: "black" }}
-                    to="/reportar"
-                  >
+              <Link
+                style={{ textDecoration: "none", color: "black" }}
+                to="/buscador"
+              >
+                <MenuItem key="buscador" onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Buscar 🔎</Typography>
+                </MenuItem>
+              </Link>
+              <Link
+                style={{ textDecoration: "none", color: "black" }}
+                to="/reportar"
+              >
+                <MenuItem key="reportar" onClick={handleCloseNavMenu}>
+                  <Typography href="/reportar" textAlign="center">
                     Reportar 🗣
-                  </Link>
-                </Typography>
-              </MenuItem>
-              <MenuItem key="notificacio" onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">
-                  <Link
-                    style={{ textDecoration: "none", color: "black" }}
-                    to="/notificacio"
-                  >
-                    Notificar-me 📩
-                  </Link>
-                </Typography>
-              </MenuItem>
+                  </Typography>
+                </MenuItem>
+              </Link>
+              <Link
+                style={{ textDecoration: "none", color: "black" }}
+                to="/notificacio"
+              >
+                <MenuItem key="notificacio" onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">Notificar-me 📩</Typography>
+                </MenuItem>
+              </Link>
               {!isAuthenticated && (
-                <MenuItem key="login" onClick={handleCloseNavMenu}>
-                  <Typography
-                    textAlign="center"
-                    onClick={() => loginWithRedirect()}
-                  >
-                    Log In
-                  </Typography>
+                <MenuItem key="login" onClick={() => loginWithRedirect()}>
+                  <Typography textAlign="center">Log In</Typography>
                 </MenuItem>
               )}
               {isAuthenticated && (
-                <MenuItem key="profile" onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                    <Link
-                      style={{ textDecoration: "none", color: "black" }}
-                      to="/profile"
-                    >
-                      Perfil 👤
-                    </Link>
-                  </Typography>
-                </MenuItem>
+                <Link
+                  style={{ textDecoration: "none", color: "black" }}
+                  to="/profile"
+                >
+                  <MenuItem key="profile" onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">Perfil 👤</Typography>
+                  </MenuItem>
+                </Link>
               )}
               {isAuthenticated && (
-                <MenuItem key="logout" onClick={handleCloseNavMenu}>
-                  <Typography
-                    textAlign="center"
-                    onClick={() => logout({ returnTo: window.location.origin })}
-                  >
-                    Log Out
-                  </Typography>
+                <MenuItem
+                  key="logout"
+                  onClick={() => logout({ returnTo: window.location.origin })}
+                >
+                  <Typography textAlign="center">Log Out</Typography>
                 </MenuItem>
               )}
             </Menu>
