@@ -42,6 +42,9 @@ function NavBar() {
     setAnchorElUser(null);
   };
 
+  const { logout } = useAuth0();
+  const { loginWithRedirect } = useAuth0();
+
   return (
     <AppBar position="sticky">
       <Container maxWidth="xxl">
@@ -209,7 +212,12 @@ function NavBar() {
               </MenuItem>
               {!isAuthenticated && (
                 <MenuItem key="login" onClick={handleCloseNavMenu}>
-                  <LoginButton />
+                  <Typography
+                    textAlign="center"
+                    onClick={() => loginWithRedirect()}
+                  >
+                    Log In
+                  </Typography>
                 </MenuItem>
               )}
               {isAuthenticated && (
@@ -219,14 +227,19 @@ function NavBar() {
                       style={{ textDecoration: "none", color: "black" }}
                       to="/profile"
                     >
-                      Perfil <Person2 sx={{ m: 1 }} />
+                      Perfil 👤
                     </Link>
                   </Button>
                 </MenuItem>
               )}
               {isAuthenticated && (
                 <MenuItem key="logout" onClick={handleCloseNavMenu}>
-                  <LogoutButton />
+                  <Typography
+                    textAlign="center"
+                    onClick={() => logout({ returnTo: window.location.origin })}
+                  >
+                    Log Out
+                  </Typography>
                 </MenuItem>
               )}
             </Menu>
