@@ -1,9 +1,7 @@
 import Box from "@mui/material/Box";
-import { Grid, Typography, Modal, Hidden } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Grid, Typography, Modal, useMediaQuery, Divider } from "@mui/material";
 import { useEffect, useState } from "react";
 import { getLostObjects } from "../services/message.service";
-import CardItem from "../UI/CardItem";
 import "../Cards.css";
 
 const LostObjects = () => {
@@ -111,12 +109,80 @@ const LostObjects = () => {
             p: 4,
           }}
         >
+          <Typography gutterBottom variant="h5">
+            {selectedObject.title}
+          </Typography>
+          <Divider></Divider>
+          <Grid container spacing={2} columns={16} sx={{ m: 3 }}>
+            <Grid item sm={8}>
+              <Box>
+                <img
+                  src={selectedObject.picture}
+                  alt="img not found"
+                  style={{
+                    borderRadius: 10,
+                    maxWidth: `${
+                      useMediaQuery("(min-width:900px)") ? "400px" : "70%"
+                    }`,
+                    minWidth: `${
+                      useMediaQuery("(min-width:900px)") ? "175px" : "75px"
+                    }}`,
+                    padding: `${"2px"}`,
+                    backgroundColor: "gray",
+                    marginLeft: `${"20px"}`,
+                    maxHeight: 1000,
+                  }}
+                />
+              </Box>
+            </Grid>
+            <Grid item sm={8}>
+              <Typography gutterBottom>
+                <b>{"Categoria: "}</b>
+                {selectedObject.categories}
+              </Typography>
+              <Typography gutterBottom>
+                <b>Info detall:</b>
+                <br />
+                {selectedObject.text}
+              </Typography>
+              <Typography gutterBottom>
+                <b>{"Data trobat: "}</b>
+                {selectedObject.dateFound}
+              </Typography>
+              <Typography gutterBottom>
+                <b>{"Lloc: "}</b>
+                {selectedObject.lloc}
+              </Typography>
+              <Typography gutterBottom>
+                <b>{"Telèfon contacte: "}</b>
+                {selectedObject.telefon}
+              </Typography>
+              <Typography gutterBottom>
+                <b>{"Lloc d'emmagatzematge: "}</b>
+                {selectedObject.recollida}
+              </Typography>
+            </Grid>
+          </Grid>
+        </Box>
+        {/* <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "80%",
+            bgcolor: "background.paper",
+            borderRadius: 4,
+            boxShadow: 24,
+            p: 4,
+          }}
+        >
           info de l'objecte:
           <br />
           <pre style={{ whiteSpace: "pre-wrap" }}>
             {JSON.stringify(selectedObject, null, 2)}
           </pre>
-        </Box>
+        </Box> */}
       </Modal>
     </>
   );

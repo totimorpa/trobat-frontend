@@ -53,7 +53,7 @@ function ResumStep(props) {
           </Typography>
           <Typography gutterBottom>
             <b>{"Lloc: "}</b>
-            {props.formData.llocs}
+            {props.formData.lloc}
           </Typography>
           <Typography gutterBottom>
             <b>{"Telèfon contacte: "}</b>

@@ -25,7 +25,7 @@ function Footer() {
           <div className="footer-link-items">
             <h2>Videos</h2>
             <Link to="/">Presentació</Link>
-            <Link to="/">Tutorial d'us</Link>
+            <Link to="/">Tutorial d'ús</Link>
           </div>
           <div className="footer-link-items">
             <h2>Xarxes Socials</h2>
