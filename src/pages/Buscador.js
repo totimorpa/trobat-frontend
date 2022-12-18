@@ -27,7 +27,7 @@ const Buscador = () => {
             Aquí van els filtres, ara per ara es retornen tots els objectes de
             la base de dades.
             <br />
-            Pàgina en desnvolupament
+            Pàgina en desenvolupament
           </h3>
         </Box>
         <LostObjects />
