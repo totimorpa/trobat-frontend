@@ -1,5 +1,11 @@
 import React from "react";
-import { TextField, Select, InputLabel, MenuItem } from "@mui/material";
+import {
+  TextField,
+  Select,
+  InputLabel,
+  MenuItem,
+  FormControl,
+} from "@mui/material";
 import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
 
@@ -28,19 +34,21 @@ const InfoStep = (props) => {
           onChange={(newValue) => props.onChange(newValue)}
           fullWidth
         />
-        <InputLabel>Categoria</InputLabel>
-        <Select
-          style={{ width: "100%" }}
-          name="categories"
-          value={props.formData["categories"] || ""}
-          onChange={(newvalue) => props.onChange(newvalue)}
-        >
-          {categories.map((categoria) => (
-            <MenuItem key={categoria.value} value={categoria.value}>
-              {categoria.label}
-            </MenuItem>
-          ))}
-        </Select>
+        <FormControl sx={{ mt: 1, width: "100%" }}>
+          <InputLabel>Categoria</InputLabel>
+          <Select
+            label="categoria"
+            name="categories"
+            value={props.formData["categories"] || ""}
+            onChange={(newvalue) => props.onChange(newvalue)}
+          >
+            {categories.map((categoria) => (
+              <MenuItem key={categoria.value} value={categoria.value}>
+                {categoria.label}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
       </Box>
     </Grid>
   );
