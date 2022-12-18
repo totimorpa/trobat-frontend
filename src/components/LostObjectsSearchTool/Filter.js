@@ -46,6 +46,9 @@ function Filter() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Make API request using the selected filters as parameters in the query string
+    console.log(
+      `/api/lostobjects?search=${search}&dateFound=${dateFound}&locationFound=${locationFound}&categories=${categories}`
+    );
     fetch(
       `/api/lostobjects?search=${search}&dateFound=${dateFound}&locationFound=${locationFound}&categories=${categories.join(
         ","
@@ -54,6 +57,7 @@ function Filter() {
       .then((response) => response.json())
       .then((data) => {
         // setLostObjects(data);
+        console.log("yey");
       });
   };
 
@@ -90,7 +94,7 @@ function Filter() {
             <Box sx={{ mr: 2, mb: 2 }}>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
-                  label="Data Perdut"
+                  label="Data perdut"
                   value={dateFound}
                   onChange={(date) => setDateFound(date)}
                   renderInput={(params) => <TextField {...params} />}
@@ -138,7 +142,9 @@ function Filter() {
 
           {/* Add form elements for the categories filter here */}
           <Box sx={{ display: "flex", justifyPosition: "flex-end" }}>
-            <Button type="submit">Buscar🔎</Button>
+            <Button variant="contained" type="submit">
+              Buscar
+            </Button>
           </Box>
         </form>
       </Box>
