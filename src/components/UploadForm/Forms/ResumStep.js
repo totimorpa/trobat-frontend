@@ -29,19 +29,19 @@ function ResumStep(props) {
       <Divider></Divider>
       <Grid container spacing={2} columns={16} sx={{ m: 3 }}>
         <Grid item sm={8}>
+          <Box>
+            <Thumb file={file} src={src}></Thumb>
+          </Box>
+        </Grid>
+        <Grid item sm={8}>
           <Typography gutterBottom>
             <b>{"Títol: "}</b>
             {props.formData.title}
           </Typography>
-          <Box>
-            <Thumb file={file} src={src}></Thumb>
-          </Box>
           <Typography gutterBottom>
             <b>{"Categoria: "}</b>
             {props.formData.categories}
           </Typography>
-        </Grid>
-        <Grid item sm={8}>
           <Typography gutterBottom>
             <b>Info detall:</b>
             <br />

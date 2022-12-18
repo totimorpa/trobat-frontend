@@ -1,8 +1,16 @@
 import Box from "@mui/material/Box";
-import { Grid, Typography, Modal, useMediaQuery, Divider } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  Modal,
+  useMediaQuery,
+  Divider,
+  Button,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import { getLostObjects } from "../services/message.service";
 import "../Cards.css";
+import CloseIcon from "@mui/icons-material/Close";
 
 const LostObjects = () => {
   const [open, setOpen] = useState(false);
@@ -102,18 +110,35 @@ const LostObjects = () => {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: "80%",
+            width: "85%",
             bgcolor: "background.paper",
             borderRadius: 4,
             boxShadow: 24,
             p: 4,
           }}
         >
-          <Typography gutterBottom variant="h5">
-            {selectedObject.title}
-          </Typography>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+            }}
+          >
+            <Box sx={{ flexGrow: 1 }}>
+              <Typography gutterBottom variant="h5">
+                {selectedObject.title}
+              </Typography>
+            </Box>
+
+            <Box sx={{ flexGrow: 0 }}>
+              <CloseIcon
+                sx={{ color: "#FF0000" }}
+                onClick={handleClose}
+              ></CloseIcon>
+            </Box>
+          </Box>
+
           <Divider></Divider>
-          <Grid container spacing={2} columns={16} sx={{ m: 3 }}>
+          <Grid container spacing={2} columns={16} sx={{ mt: 3 }}>
             <Grid item sm={8}>
               <Box>
                 <img
@@ -164,25 +189,6 @@ const LostObjects = () => {
             </Grid>
           </Grid>
         </Box>
-        {/* <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "80%",
-            bgcolor: "background.paper",
-            borderRadius: 4,
-            boxShadow: 24,
-            p: 4,
-          }}
-        >
-          info de l'objecte:
-          <br />
-          <pre style={{ whiteSpace: "pre-wrap" }}>
-            {JSON.stringify(selectedObject, null, 2)}
-          </pre>
-        </Box> */}
       </Modal>
     </>
   );
