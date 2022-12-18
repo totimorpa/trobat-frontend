@@ -6,6 +6,7 @@ import {
   useMediaQuery,
   Divider,
   Button,
+  IconButton,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { getLostObjects } from "../services/message.service";
@@ -114,7 +115,8 @@ const LostObjects = () => {
             bgcolor: "background.paper",
             borderRadius: 4,
             boxShadow: 24,
-            p: 4,
+            p: 3,
+            pt: 1,
           }}
         >
           <Box
@@ -123,18 +125,13 @@ const LostObjects = () => {
               display: "flex",
             }}
           >
-            <Box sx={{ flexGrow: 1 }}>
-              <Typography gutterBottom variant="h5">
-                {selectedObject.title}
-              </Typography>
-            </Box>
+            <Typography variant="h5" sx={{ flexGrow: 1, pt: 1, pb: 1 }}>
+              {selectedObject.title}
+            </Typography>
 
-            <Box sx={{ flexGrow: 0 }}>
-              <CloseIcon
-                sx={{ color: "#FF0000" }}
-                onClick={handleClose}
-              ></CloseIcon>
-            </Box>
+            <IconButton size="large" onClick={handleClose} sx={{ flexGrow: 0 }}>
+              <CloseIcon sx={{ color: "#FF0000" }}></CloseIcon>
+            </IconButton>
           </Box>
 
           <Divider></Divider>
@@ -147,14 +144,11 @@ const LostObjects = () => {
                   style={{
                     borderRadius: 10,
                     maxWidth: `${
-                      useMediaQuery("(min-width:900px)") ? "400px" : "70%"
+                      useMediaQuery("(min-width:900px)") ? "400px" : "80%"
                     }`,
                     minWidth: `${
                       useMediaQuery("(min-width:900px)") ? "175px" : "75px"
                     }}`,
-                    padding: `${"2px"}`,
-                    backgroundColor: "gray",
-                    marginLeft: `${"20px"}`,
                     maxHeight: 1000,
                   }}
                 />
