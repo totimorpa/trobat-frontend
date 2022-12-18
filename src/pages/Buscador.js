@@ -1,6 +1,7 @@
-import { Grid, Box } from "@mui/material";
+import { Grid } from "@mui/material";
 import LostObjects from "../components/LostObjectsSearchTool/LostObjects";
 import { useEffect } from "react";
+import Filter from "../components/LostObjectsSearchTool/Filter";
 
 const Buscador = () => {
   useEffect(() => {
@@ -11,25 +12,7 @@ const Buscador = () => {
   return (
     <>
       <Grid container justifyContent="center">
-        <Box
-          sx={{
-            backgroundColor: "white",
-            width: "80%",
-            mt: 3,
-            mb: 3,
-            p: 3,
-            borderRadius: 2,
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <h3>
-            Aquí van els filtres, ara per ara es retornen tots els objectes de
-            la base de dades.
-            <br />
-            Pàgina en desenvolupament
-          </h3>
-        </Box>
+        <Filter />
         <LostObjects />
       </Grid>
     </>

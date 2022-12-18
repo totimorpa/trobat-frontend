@@ -1,12 +1,11 @@
-import Box from "@mui/material/Box";
 import {
   Grid,
   Typography,
   Modal,
   useMediaQuery,
   Divider,
-  Button,
   IconButton,
+  Box,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { getLostObjects } from "../services/message.service";
@@ -57,47 +56,51 @@ const LostObjects = () => {
             theme.palette.mode === "dark" ? "#101010" : "grey.50",
           color: (theme) =>
             theme.palette.mode === "dark" ? "grey.300" : "grey.800",
-          borderRadius: 2,
+          borderRadius: 4,
+          boxShadow: 24,
           fontSize: "1rem",
           fontWeight: "700",
           width: "80%",
         }}
       >
-        <Grid
-          container
-          spacing={{ xs: 0.5, md: 0.5 }}
-          columns={{ xs: 6, sm: 16, md: 20 }}
-        >
-          {[...message, ...message, ...message].map((lostObject) => (
-            <Grid key={lostObject.id} item xs={3} sm={4} md={4}>
-              <li className="cards__item">
-                <div
-                  className="cards__item__link"
-                  onClick={() => handleOpen(lostObject)}
-                >
-                  <figure
-                    className={
-                      lostObject.categories
-                        ? "cards__item__pic-wrap"
-                        : "cards__item__pic-wrap1"
-                    }
-                    data-category={lostObject.categories}
+        <Box sx={{ mt: 2 }}>
+          <Grid
+            container
+            spacing={{ xs: 0.5, md: 0.5 }}
+            columns={{ xs: 6, sm: 12, md: 20 }}
+          >
+            {message.map((lostObject) => (
+              <Grid key={lostObject.id} item xs={3} sm={4} md={4}>
+                <li className="cards__item">
+                  <div
+                    className="cards__item__link"
+                    onClick={() => handleOpen(lostObject)}
                   >
-                    <img
-                      className="cards__item__img"
-                      alt=""
-                      src={lostObject.picture}
-                    />
-                  </figure>
-                  <div className="cards__item__info">
-                    <h4 className="cards__item__text">{lostObject.title}</h4>
+                    <figure
+                      className={
+                        lostObject.categories
+                          ? "cards__item__pic-wrap"
+                          : "cards__item__pic-wrap1"
+                      }
+                      data-category={lostObject.categories}
+                    >
+                      <img
+                        className="cards__item__img"
+                        alt=""
+                        src={lostObject.picture}
+                      />
+                    </figure>
+                    <div className="cards__item__info">
+                      <h4 className="cards__item__text">{lostObject.title}</h4>
+                    </div>
                   </div>
-                </div>
-              </li>
-            </Grid>
-          ))}
-        </Grid>
+                </li>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       </Box>
+
       <Modal
         open={open}
         onClose={handleClose}

@@ -13,7 +13,6 @@ const categories = [
   { value: "ulleres", label: "Ulleres" },
   { value: "joies", label: "Cartera" },
   { value: "altres", label: "Altres" },
-  { value: "all", label: "Totes les categories" },
 ];
 
 const InfoStep = (props) => {
