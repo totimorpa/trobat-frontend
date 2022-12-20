@@ -37,10 +37,7 @@ const ImageStep = (props) => {
   return (
     <Grid container spacing={3} style={{ margin: 4 }}>
       <Grid item xs={12}>
-        <label
-          for="inputTag"
-          style={{ color: "var(--main-color)", cursor: "pointer" }}
-        >
+        <label style={{ color: "var(--main-color)", cursor: "pointer" }}>
           Fes una foto de l'objecte trobat
           <br />
           <input

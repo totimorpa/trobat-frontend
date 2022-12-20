@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import { useEffect, useState } from "react";
 import {
   Stepper,
   Step,
@@ -19,6 +19,7 @@ import ResumStep from "./Forms/ResumStep";
 import InfoRecollidaStep from "./Forms/InfoRecollidaStep";
 import { postLostObject } from "../services/message.service";
 import { useNavigate } from "react-router-dom";
+import uploadFileToBlob from "../services/uploadfileToBlob";
 
 function getSteps() {
   return [
@@ -64,8 +65,8 @@ function getStepContent(
 const FormComponent = () => {
   const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth0();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [completed, setCompleted] = React.useState({
+  const [activeStep, setActiveStep] = useState(0);
+  const [completed, setCompleted] = useState({
     0: true,
     1: false,
     2: false,
@@ -74,13 +75,14 @@ const FormComponent = () => {
     5: false,
     6: false,
   });
-  const [message, setMessage] = React.useState([]);
+  const [message, setMessage] = useState([]);
+  const [uploading, setUploading] = useState(false);
 
   const steps = getSteps();
 
-  const [formData, setFormData] = React.useState({});
+  const [formData, setFormData] = useState({});
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
@@ -158,21 +160,18 @@ const FormComponent = () => {
     return true;
   };
 
-  const getBase64Image = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
-  };
-
   const handleSubmit = () => {
-    const Base64Image = getBase64Image(formData.image.file).then((dataUrl) => {
-      console.log(dataUrl);
-    });
+    setUploading(true);
 
-    const getMessage = async () => {
+    const uploadObject = async () => {
+      const blobURL = await uploadFileToBlob(formData.image.file);
+
+      console.log(blobURL);
+
+      setFormData((prevState) => ({
+        ...prevState,
+        image: blobURL[0],
+      }));
       const { data, error } = await postLostObject(user, formData);
       if (data) {
         setMessage(data);
@@ -181,10 +180,10 @@ const FormComponent = () => {
         setMessage(JSON.stringify(error, null, 2));
       }
     };
-    getMessage();
-
     console.log(message);
+    setUploading(false);
     handleOpen();
+    uploadObject();
   };
 
   const handleNext = () => {
