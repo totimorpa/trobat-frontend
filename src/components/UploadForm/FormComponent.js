@@ -21,6 +21,9 @@ import { postLostObject } from "../services/message.service";
 import { useNavigate } from "react-router-dom";
 import uploadFileToBlob from "../services/uploadfileToBlob";
 
+const sasToken = process.env.REACT_APP_STORAGESASTOKEN;
+const storageAccountName = process.env.REACT_APP_STORAGERESOURCENAME;
+
 function getSteps() {
   return [
     "",
@@ -168,17 +171,17 @@ const FormComponent = () => {
 
       console.log(blobURL);
 
-      const { data, error } = await postLostObject(user, formData, blobURL[0]);
+      const { data, error } = await postLostObject(user, formData, blobURL);
       if (data) {
         setMessage(data);
+        setUploading(false);
       }
       if (error) {
         setMessage(JSON.stringify(error, null, 2));
       }
     };
-    console.log(formData);
-    console.log(message);
-    setUploading(false);
+    // console.log(formData);
+    // console.log(message);
     handleOpen();
     uploadObject();
   };
