@@ -58,9 +58,6 @@ const uploadFileToBlob = async (file) => {
 
   // get Container - full public read access
   const containerClient = blobService.getContainerClient(containerName);
-  await containerClient.createIfNotExists({
-    access: "container",
-  });
 
   // upload file
   await createBlobInContainer(containerClient, file);

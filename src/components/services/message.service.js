@@ -37,7 +37,7 @@ export const getUsers = async () => {
   };
 };
 
-export const postLostObject = async (user, lostObject) => {
+export const postLostObject = async (user, lostObject, img) => {
   const response = await axios({
     url: `${apiServerUrl}/lostObjects`,
     method: "POST",
@@ -53,6 +53,7 @@ export const postLostObject = async (user, lostObject) => {
       lloc: lostObject.lloc,
       telefon: lostObject.telefon,
       recollida: lostObject.recollida,
+      picture: img,
     },
   });
   const { data } = response;

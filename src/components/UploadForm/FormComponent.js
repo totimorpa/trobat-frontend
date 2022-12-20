@@ -168,11 +168,7 @@ const FormComponent = () => {
 
       console.log(blobURL);
 
-      setFormData((prevState) => ({
-        ...prevState,
-        image: blobURL[0],
-      }));
-      const { data, error } = await postLostObject(user, formData);
+      const { data, error } = await postLostObject(user, formData, blobURL[0]);
       if (data) {
         setMessage(data);
       }
@@ -180,6 +176,7 @@ const FormComponent = () => {
         setMessage(JSON.stringify(error, null, 2));
       }
     };
+    console.log(formData);
     console.log(message);
     setUploading(false);
     handleOpen();
