@@ -6,6 +6,7 @@ import {
   Divider,
   IconButton,
   Box,
+  LinearProgress,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { getLostObjects } from "../services/message.service";
@@ -15,6 +16,7 @@ import CloseIcon from "@mui/icons-material/Close";
 const LostObjects = () => {
   const [open, setOpen] = useState(false);
   const [selectedObject, setSelectedObject] = useState({});
+  const [isMounted, setIsMounted] = useState(true);
 
   const handleOpen = (objecte) => {
     setSelectedObject(objecte);
@@ -24,13 +26,14 @@ const LostObjects = () => {
   const [message, setMessage] = useState([]);
 
   useEffect(() => {
-    let isMounted = true;
+    setIsMounted(false);
     const getMessage = async () => {
       const { data, error } = await getLostObjects();
       if (!isMounted) {
         return;
       }
       if (data) {
+        setIsMounted(true);
         setMessage(data);
       }
       if (error) {
@@ -38,9 +41,7 @@ const LostObjects = () => {
       }
     };
     getMessage();
-    return () => {
-      isMounted = false;
-    };
+    return () => {};
   }, []);
 
   console.log(message[0]);
@@ -51,6 +52,7 @@ const LostObjects = () => {
         sx={{
           m: 1,
           p: 2,
+          mb: 3,
           alignItems: "center",
           bgcolor: (theme) =>
             theme.palette.mode === "dark" ? "#101010" : "grey.50",
@@ -63,42 +65,47 @@ const LostObjects = () => {
           width: "80%",
         }}
       >
-        <Box sx={{ mt: 2 }}>
-          <Grid
-            container
-            spacing={{ xs: 0.5, md: 0.5 }}
-            columns={{ xs: 6, sm: 12, md: 20 }}
-          >
-            {message.map((lostObject) => (
-              <Grid key={lostObject.id} item xs={3} sm={4} md={4}>
-                <li className="cards__item">
-                  <div
-                    className="cards__item__link"
-                    onClick={() => handleOpen(lostObject)}
-                  >
-                    <figure
-                      className={
-                        lostObject.categories
-                          ? "cards__item__pic-wrap"
-                          : "cards__item__pic-wrap1"
-                      }
-                      data-category={lostObject.categories}
+        {isMounted && (
+          <Box sx={{ mt: 2 }}>
+            <Grid
+              container
+              spacing={{ xs: 0.5, md: 0.5 }}
+              columns={{ xs: 6, sm: 12, md: 20 }}
+            >
+              {message.map((lostObject) => (
+                <Grid key={lostObject.id} item xs={3} sm={4} md={4}>
+                  <li className="cards__item">
+                    <div
+                      className="cards__item__link"
+                      onClick={() => handleOpen(lostObject)}
                     >
-                      <img
-                        className="cards__item__img"
-                        alt=""
-                        src={lostObject.picture}
-                      />
-                    </figure>
-                    <div className="cards__item__info">
-                      <h4 className="cards__item__text">{lostObject.title}</h4>
+                      <figure
+                        className={
+                          lostObject.categories
+                            ? "cards__item__pic-wrap"
+                            : "cards__item__pic-wrap1"
+                        }
+                        data-category={lostObject.categories}
+                      >
+                        <img
+                          className="cards__item__img"
+                          alt=""
+                          src={lostObject.picture}
+                        />
+                      </figure>
+                      <div className="cards__item__info">
+                        <h4 className="cards__item__text">
+                          {lostObject.title}
+                        </h4>
+                      </div>
                     </div>
-                  </div>
-                </li>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
+                  </li>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+        )}
+        {!isMounted && <LinearProgress />}
       </Box>
 
       <Modal
