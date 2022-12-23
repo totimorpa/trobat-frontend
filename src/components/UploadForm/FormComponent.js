@@ -7,6 +7,7 @@ import {
   Box,
   StepButton,
   Modal,
+  CircularProgress,
 } from "@mui/material";
 import { useAuth0 } from "@auth0/auth0-react";
 import IntroStep from "./Forms/IntroStep";
@@ -245,23 +246,39 @@ const FormComponent = () => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box
-            sx={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              width: "80%",
-              bgcolor: "background.paper",
-              borderRadius: 4,
-              boxShadow: 24,
-              p: 4,
-            }}
-          >
-            <Typography variant="h4" sx={{ m: "auto" }}>
-              Gràcies per penjar un objecte, el propietari segur que n'està
-              agraït! 🙏🏽 🫶🏼
-            </Typography>
+          <Box>
+            {!uploading && (
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: "80%",
+                  bgcolor: "background.paper",
+                  borderRadius: 4,
+                  boxShadow: 24,
+                  p: 4,
+                }}
+              >
+                <Typography variant="h4" sx={{ m: "auto" }}>
+                  Gràcies per penjar un objecte, el propietari segur que n'està
+                  agraït! 🙏🏽 🫶🏼
+                </Typography>
+              </Box>
+            )}
+            {uploading && (
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              >
+                <CircularProgress />
+              </Box>
+            )}
           </Box>
         </Modal>
       </div>
