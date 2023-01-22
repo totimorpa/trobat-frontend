@@ -15,7 +15,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useState } from "react";
 
-function Filter() {
+function Filter(props) {
   const [search, setSearch] = useState("");
   const [dateFound, setDateFound] = useState(null);
   const [locationFound, setLocationFound] = useState("");
@@ -49,16 +49,17 @@ function Filter() {
     console.log(
       `/api/lostobjects?search=${search}&dateFound=${dateFound}&locationFound=${locationFound}&categories=${categories}`
     );
-    fetch(
-      `/api/lostobjects?search=${search}&dateFound=${dateFound}&locationFound=${locationFound}&categories=${categories.join(
-        ","
-      )}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        // setLostObjects(data);
-        console.log("yey");
-      });
+    // fetch(
+    //   `/api/lostobjects?search=${search}&dateFound=${dateFound}&locationFound=${locationFound}&categories=${categories.join(
+    //     ","
+    //   )}`
+    // )
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     // setLostObjects(data);
+    //     console.log("yey");
+    //   });
+    props.handleSearch();
   };
 
   return (

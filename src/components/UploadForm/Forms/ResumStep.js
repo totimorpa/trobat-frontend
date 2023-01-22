@@ -36,16 +36,22 @@ function ResumStep(props) {
         <Grid item sm={8}>
           <Typography gutterBottom>
             <b>{"Títol: "}</b>
-            {props.formData.title}
+            {props.formData.title &&
+              props.formData.title.charAt(0).toUpperCase() +
+                props.formData.title.slice(1)}
           </Typography>
           <Typography gutterBottom>
             <b>{"Categoria: "}</b>
-            {props.formData.categories}
+            {props.formData.categories &&
+              props.formData.categories.charAt(0).toUpperCase() +
+                props.formData.categories.slice(1)}{" "}
           </Typography>
           <Typography gutterBottom>
             <b>Info detall:</b>
             <br />
-            {props.formData.detailInfo}
+            {props.formData.detailInfo &&
+              props.formData.detailInfo.charAt(0).toUpperCase() +
+                props.formData.detailInfo.slice(1)}
           </Typography>
           <Typography gutterBottom>
             <b>{"Data trobat: "}</b>
@@ -53,7 +59,9 @@ function ResumStep(props) {
           </Typography>
           <Typography gutterBottom>
             <b>{"Lloc: "}</b>
-            {props.formData.lloc}
+            {props.formData.lloc &&
+              props.formData.lloc.charAt(0).toUpperCase() +
+                props.formData.lloc.slice(1)}
           </Typography>
           <Typography gutterBottom>
             <b>{"Telèfon contacte: "}</b>
@@ -61,7 +69,9 @@ function ResumStep(props) {
           </Typography>
           <Typography gutterBottom>
             <b>{"Lloc d'emmagatzematge: "}</b>
-            {props.formData.recollida}
+            {props.formData.recollida &&
+              props.formData.recollida.charAt(0).toUpperCase() +
+                props.formData.recollida.slice(1)}
           </Typography>
         </Grid>
       </Grid>

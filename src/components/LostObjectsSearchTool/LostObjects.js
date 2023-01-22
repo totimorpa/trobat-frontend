@@ -13,7 +13,7 @@ import { getLostObjects } from "../services/message.service";
 import "../Cards.css";
 import CloseIcon from "@mui/icons-material/Close";
 
-const LostObjects = () => {
+const LostObjects = (props) => {
   const [open, setOpen] = useState(false);
   const [selectedObject, setSelectedObject] = useState({});
   const [isMounted, setIsMounted] = useState(true);
@@ -42,7 +42,7 @@ const LostObjects = () => {
     };
     getMessage();
     return () => {};
-  }, []);
+  }, [props.searchQuery]);
 
   console.log(message[0]);
 
@@ -167,12 +167,16 @@ const LostObjects = () => {
             <Grid item sm={8}>
               <Typography gutterBottom>
                 <b>{"Categoria: "}</b>
-                {selectedObject.categories}
+                {selectedObject.categories &&
+                  selectedObject.categories.charAt(0).toUpperCase() +
+                    selectedObject.categories.slice(1)}
               </Typography>
               <Typography gutterBottom>
                 <b>Info detall:</b>
                 <br />
-                {selectedObject.text}
+                {selectedObject.text &&
+                  selectedObject.text.charAt(0).toUpperCase() +
+                    selectedObject.text.slice(1)}
               </Typography>
               <Typography gutterBottom>
                 <b>{"Data trobat: "}</b>
@@ -180,7 +184,9 @@ const LostObjects = () => {
               </Typography>
               <Typography gutterBottom>
                 <b>{"Lloc: "}</b>
-                {selectedObject.lloc}
+                {selectedObject.lloc &&
+                  selectedObject.lloc.charAt(0).toUpperCase() +
+                    selectedObject.lloc.slice(1)}
               </Typography>
               <Typography gutterBottom>
                 <b>{"Telèfon contacte: "}</b>
@@ -188,7 +194,9 @@ const LostObjects = () => {
               </Typography>
               <Typography gutterBottom>
                 <b>{"Lloc d'emmagatzematge: "}</b>
-                {selectedObject.recollida}
+                {selectedObject.recollida &&
+                  selectedObject.recollida.charAt(0).toUpperCase() +
+                    selectedObject.recollida.slice(1)}
               </Typography>
             </Grid>
           </Grid>

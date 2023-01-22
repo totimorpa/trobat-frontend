@@ -26,16 +26,7 @@ const sasToken = process.env.REACT_APP_STORAGESASTOKEN;
 const storageAccountName = process.env.REACT_APP_STORAGERESOURCENAME;
 
 function getSteps() {
-  return [
-    "",
-    "Foto",
-    "Info",
-    "Info Detall",
-    "Data",
-    "Lloc",
-    "Recollida",
-    "Resum",
-  ];
+  return ["Foto", "Info", "Info Detall", "Data", "Lloc", "Recollida", "Resum"];
 }
 
 function getStepContent(
@@ -47,37 +38,34 @@ function getStepContent(
 ) {
   switch (step) {
     case 0:
-      return <IntroStep />;
-    case 1:
       return <ImageStep formData={formData} onChange={handleChangeImage} />;
-    case 2:
+    case 1:
       return <InfoStep formData={formData} onChange={handleChange} />;
-    case 3:
+    case 2:
       return <DetailInfoStep formData={formData} onChange={handleChange} />;
-    case 4:
+    case 3:
       return <DateStep formData={formData} onChange={handleDateChange} />;
-    case 5:
+    case 4:
       return <LlocStep formData={formData} onChange={handleChange} />;
-    case 6:
+    case 5:
       return <InfoRecollidaStep formData={formData} onChange={handleChange} />;
-    case 7:
+    case 6:
       return <ResumStep formData={formData} />;
     default:
-      return <div>Not found</div>;
+      return <IntroStep />;
   }
 }
 const FormComponent = () => {
   const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth0();
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(-1);
   const [completed, setCompleted] = useState({
-    0: true,
+    0: false,
     1: false,
     2: false,
     3: false,
     4: false,
     5: false,
-    6: false,
   });
   const [message, setMessage] = useState([]);
   const [uploading, setUploading] = useState(false);
@@ -100,19 +88,19 @@ const FormComponent = () => {
     ) {
       setCompleted((prevState) => ({
         ...prevState,
-        2: true,
+        1: true,
       }));
     }
     if (formData.hasOwnProperty("detailInfo")) {
       setCompleted((prevState) => ({
         ...prevState,
-        3: true,
+        2: true,
       }));
     }
     if (formData.hasOwnProperty("lloc")) {
       setCompleted((prevState) => ({
         ...prevState,
-        5: true,
+        4: true,
       }));
     }
     if (
@@ -121,7 +109,7 @@ const FormComponent = () => {
     ) {
       setCompleted((prevState) => ({
         ...prevState,
-        6: true,
+        5: true,
       }));
     }
   }, [activeStep]);
@@ -140,7 +128,7 @@ const FormComponent = () => {
     }));
     setCompleted((prevState) => ({
       ...prevState,
-      1: true,
+      0: true,
     }));
   };
 
@@ -151,7 +139,7 @@ const FormComponent = () => {
     }));
     setCompleted((prevState) => ({
       ...prevState,
-      4: true,
+      3: true,
     }));
   };
 
@@ -205,15 +193,17 @@ const FormComponent = () => {
 
   return (
     <div>
-      <Stepper nonLinear activeStep={activeStep} alternativeLabel>
-        {steps.map((label) => (
-          <Step key={label} completed={completed[steps.indexOf(label)]}>
-            <StepButton
-              onClick={() => setActiveStep(steps.indexOf(label))}
-            ></StepButton>
-          </Step>
-        ))}
-      </Stepper>
+      {activeStep >= 0 && (
+        <Stepper nonLinear activeStep={activeStep} alternativeLabel>
+          {steps.slice().map((label) => (
+            <Step key={label} completed={completed[steps.indexOf(label)]}>
+              <StepButton
+                onClick={() => setActiveStep(steps.indexOf(label))}
+              ></StepButton>
+            </Step>
+          ))}
+        </Stepper>
+      )}
 
       <div>
         <Typography>
@@ -232,9 +222,7 @@ const FormComponent = () => {
             width: "100%",
           }}
         >
-          <Button disabled={activeStep === 0} onClick={handleBack}>
-            Enrere
-          </Button>
+          {activeStep >= 0 && <Button onClick={handleBack}>Enrere</Button>}
 
           <Button variant="contained" color="primary" onClick={handleNext}>
             {activeStep === steps.length - 1 ? "Penjar" : "Següent"}
