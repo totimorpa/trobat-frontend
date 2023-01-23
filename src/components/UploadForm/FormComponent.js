@@ -176,7 +176,7 @@ const FormComponent = () => {
   };
 
   const handleNext = () => {
-    if (activeStep < 7) {
+    if (activeStep < 6) {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     } else {
       if (allStepsCompleted(completed)) {

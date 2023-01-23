@@ -22,12 +22,12 @@ function ResumStep(props) {
   }, []);
 
   return (
-    <Box sx={{ m: 5 }}>
-      <Typography gutterBottom variant="h5">
+    <Box sx={{ m: 5, ml: 0 }}>
+      <Typography gutterBottom variant="h5" sx={{ ml: 5 }}>
         Repassa les dades introduides
       </Typography>
       <Divider></Divider>
-      <Grid container spacing={2} columns={16} sx={{ m: 3 }}>
+      <Grid container spacing={2} columns={16} sx={{ m: 3, ml: 0 }}>
         <Grid item sm={8}>
           <Box>
             <Thumb file={file} src={src}></Thumb>
