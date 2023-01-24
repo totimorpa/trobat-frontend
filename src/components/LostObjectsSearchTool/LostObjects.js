@@ -180,7 +180,13 @@ const LostObjects = (props) => {
               </Typography>
               <Typography gutterBottom>
                 <b>{"Data trobat: "}</b>
-                {selectedObject.dateFound}
+                {[
+                  new Date(selectedObject.dateFound).getDate(),
+                  (new Date(selectedObject.dateFound).getMonth() + 1)
+                    .toString()
+                    .padStart(2, "0"),
+                  new Date(selectedObject.dateFound).getFullYear(),
+                ].join("-")}
               </Typography>
               <Typography gutterBottom>
                 <b>{"Lloc: "}</b>

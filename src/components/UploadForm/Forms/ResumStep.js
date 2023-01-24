@@ -55,7 +55,14 @@ function ResumStep(props) {
           </Typography>
           <Typography gutterBottom>
             <b>{"Data trobat: "}</b>
-            {props.formData.date && props.formData.date.toString()}
+            {props.formData.date &&
+              [
+                new Date(props.formData.date).getDate(),
+                (new Date(props.formData.date).getMonth() + 1)
+                  .toString()
+                  .padStart(2, "0"),
+                new Date(props.formData.date).getFullYear(),
+              ].join("-")}
           </Typography>
           <Typography gutterBottom>
             <b>{"Lloc: "}</b>
