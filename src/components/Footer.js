@@ -19,6 +19,7 @@ function Footer() {
             <h2>Contacta'ns</h2>
             <a href="mailto: totimorpa@gmail.com">Contacte</a>
             <a href="mailto: totimorpa@gmail.com">Suport</a>
+            <a href="https://comptador.trobat.cat">Fer història</a>
           </div>
         </div>
         <div className="footer-link-wrapper">
